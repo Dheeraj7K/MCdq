@@ -290,19 +290,59 @@ def _build_website(posts: list, theory: dict):
 
     # Build post cards HTML
     def post_card(p: dict) -> str:
+        import re
+        # Work on a copy to avoid mutating the original posts list if needed
+        p = p.copy()
+        
         img  = p.get("image_path", "")
-        title = p.get("title", "")
         body  = p.get("body", "")
         theme = p.get("theme", "")
+        title = p.get("title", "")
+        
+        # CLEANUP: Remove redundant technical prefixes from body
+        # Matches variations like: "Phase state derivation complete. ", "Evaluating `...`:", etc.
+        # We use a robust regex that handles newlines and multiple spaces.
+        body = re.sub(r'^\s*(Phase state derivation complete\.(?:.*?\.\s*)?|Evaluating\s+`[^`]+`:\s*|Result:\s*)', '', body, flags=re.IGNORECASE | re.DOTALL)
+        
+        # TITLE MAPPING: Standardize to "Evaluating: [Concept]"
+        # If theme is Breakthrough or Progress, we always want the title to be "Evaluating: [Concept]"
+        if theme in ["Breakthrough", "Progress"]:
+            # 1. First, try to extract from original title if it has "Result: ..."
+            concept_match = re.search(r'(?:Result:\s*|Differential\s*at\s*(?:.*?)?\s*|Evaluating\s*(?:.*?)?:\s*)(.*?)\s*(?:\[Iter|\d|$)', title, flags=re.IGNORECASE)
+            
+            # 2. If title is still vague, try extraction from body
+            if not concept_match or (concept_match and len(concept_match.group(1).strip()) < 3):
+                # Try to extract something from backticks `...` in body
+                subject_match = re.search(r'`([^`]+)`', p.get("body", ""))
+                if subject_match:
+                    title = f"Evaluating: {subject_match.group(1)}"
+                elif concept_match:
+                    title = f"Evaluating: {concept_match.group(1).strip()}"
+            else:
+                title = f"Evaluating: {concept_match.group(1).strip()}"
+            
+            # Final fallback: Ensure it HAS the prefix and isn't just (DFA) etc.
+            if not title.startswith("Evaluating:"):
+                title = f"Evaluating: {title}"
+            
+            # Clean up trailing punctuation or iterations
+            title = re.sub(r'\s*\[Iter.*$', '', title)
+            title = re.sub(r'[\s:]+$', '', title)
+
+        # Update the dict so the modal (which uses the JSON) is also cleaned
+        p["title"] = title
+        p["body"] = body.strip()
+
         q = p.get("quantum", {})
         cirq_imp = q.get("cirq", {}).get("improvement_pct", 895)
         tg_red = q.get("qualtran", {}).get("reduction_pct", 88.83)
         
-        # Safely escape JSON for HTML attribute
-        p_json = json.dumps(p).replace('"', '&quot;').replace("'", "\\'")
+        # Safely escape JSON for HTML attribute.
+        # We use single quotes for the attribute and double quotes internally, escaped.
+        p_json = json.dumps(p).replace('"', '&quot;').replace("'", "&#39;")
         
         return f'''
-        <div class="post-card" onclick="openPostById('{p_json}')">
+        <div class="post-card" onclick='openPostById("{p_json}")'>
           <div class="post-img-wrap">
             <img src="{img}" alt="{title}" loading="lazy" onerror="this.style.display='none'">
             <div class="post-overlay-data">
@@ -362,19 +402,24 @@ def _build_website(posts: list, theory: dict):
         graph_nodes.append({"id": r_id, "name": f"Research: {r}", "desc": "Active Theoretical Pursuit", "color": "#00ccff", "val": 20})
         graph_links.append({"source": r_id, "target": "MasterEq"})
 
-    # Latest Breakthroughs as orbiting nodes
-    breakthroughs = [p for p in posts if p.get("theme") == "Breakthrough"][:15]
+    # Latest Breakthroughs as orbiting nodes (connecting to their cycle level)
+    breakthroughs = [p for p in posts if p.get("theme") == "Breakthrough"][:30]
     for b in breakthroughs:
         b_id = b.get("id", "b")
+        cycle = b.get("cycle", 0)
         q = b.get("quantum", {}).get("cirq", {})
-        # Descriptive 'nature' labels per user feedback
         impact_desc = f"Quantum Validation Efficiency: {q.get('improvement_pct', 895)}% (φ-node resonant)"
         graph_nodes.append({"id": b_id, "name": b.get("title"), "desc": impact_desc, "color": "#33ff33", "val": 15})
-        target_eq = theory["core_equations"][0]["name"]
-        graph_links.append({"source": b_id, "target": target_eq})
+        
+        # Link to the cycle's level
+        target_lvl = f"L{cycle}"
+        graph_links.append({"source": b_id, "target": target_lvl})
+        # Hub link to core
+        graph_links.append({"source": b_id, "target": "MasterEq"})
 
+    graph_json = json.dumps({"nodes": graph_nodes, "links": graph_links}, indent=2)
     with open(website_dir / "graph_data.json", "w") as f:
-        json.dump({"nodes": graph_nodes, "links": graph_links}, f, indent=2)
+        f.write(graph_json)
 
     # Build equations list with 'natural' pillars
     equations_html = "\n".join(
@@ -501,8 +546,11 @@ def _build_website(posts: list, theory: dict):
   }}
   .post-card:hover {{ transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }}
   
-  .post-img-wrap {{ position: relative; aspect-ratio: 16/9; overflow: hidden; }}
-  .post-img-wrap img {{ width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }}
+  .post-img-wrap {{ position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0a0a1a; }}
+  .post-img-wrap img {{ 
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s;
+    font-size: 0; /* Hides alt text for broken images to keep UI clean */
+  }}
   .post-card:hover .post-img-wrap img {{ transform: scale(1.1); }}
   
   .post-overlay-data {{
@@ -518,8 +566,8 @@ def _build_website(posts: list, theory: dict):
 
   .post-card-content {{ padding: 28px; }}
   .theme-badge {{ font-size: 0.65rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }}
-  .post-title {{ font-size: 1.5rem; line-height: 1.2; margin: 12px 0 16px; font-weight: 900; font-family: var(--font-heading); }}
-  .post-body {{ color: var(--muted); font-size: 1rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }}
+  .post-title {{ font-size: 1.4rem; line-height: 1.25; margin: 12px 0 16px; font-weight: 900; font-family: var(--font-heading); color: #fff; }}
+  .post-body {{ color: var(--muted); font-size: 0.95rem; line-height: 1.6; min-height: 4.8em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }}
   
   .card-footer {{ margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }}
   .btn-primary {{
@@ -721,6 +769,70 @@ document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(
 </script>
 </body>
 </html>'''
+
+    # Generate Visualization Page (Self-contained for offline/file access)
+    viz_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKB Phase Framework | 3D System Map</title>
+    <script src="https://unpkg.com/3d-force-graph"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {{ margin: 0; background: #050510; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; }}
+        #3d-graph {{ width: 100vw; height: 100vh; }}
+        .overlay {{ position: absolute; top: 24px; left: 24px; z-index: 10; pointer-events: none; }}
+        .nav-back {{ pointer-events: auto; text-decoration: none; color: #6450ff; font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; display: block; }}
+        .title {{ font-size: 2.2rem; font-weight: 900; margin: 0; letter-spacing: -0.02em; }}
+        .subtitle {{ font-size: 1rem; color: #8892b0; margin-top: 4px; opacity: 0.8; }}
+        #node-counter {{ margin-top: 16px; font-family: 'JetBrains Mono', monospace; color: #00ccff; font-size: 0.9rem; font-weight: 700; background: rgba(100,80,255,0.1); padding: 8px 16px; border-radius: 8px; display: inline-block; border: 1px solid rgba(100,80,255,0.2); pointer-events: auto; }}
+        .legend {{ position: absolute; bottom: 24px; left: 24px; z-index: 10; padding: 16px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-size: 0.8rem; }}
+        .legend-item {{ display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }}
+        .dot {{ width: 8px; height: 8px; border-radius: 50%; }}
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <a href="index.html" class="nav-back">← Back to Feed</a>
+        <h1 class="title">DKB System Map 3D</h1>
+        <p class="subtitle">Live Architecture: Theory ⟷ Breakthroughs</p>
+        <div id="node-counter">Nodes: <span id="node-count">{len(graph_nodes)}</span></div>
+    </div>
+    <div id="3d-graph"></div>
+    <div class="legend">
+        <div class="legend-item"><div class="dot" style="background:#ff33cc"></div> Master Equation</div>
+        <div class="legend-item"><div class="dot" style="background:#ffcc00"></div> Mega Nodes (12 Levels)</div>
+        <div class="legend-item"><div class="dot" style="background:#6450ff"></div> Core Pillar Laws</div>
+        <div class="legend-item"><div class="dot" style="background:#00ccff"></div> Meta Emerged Nodes</div>
+        <div class="legend-item"><div class="dot" style="background:#33ff33"></div> Impact Breakthroughs</div>
+    </div>
+    <script>
+        const graphData = {graph_json};
+        const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
+            .graphData(graphData)
+            .nodeLabel(node => `
+                <div style="background: rgba(5,5,16,0.95); padding: 12px; border: 1px solid ${{node.color}}; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                    <div style="color:${{node.color}}; font-weight:900; font-size: 1rem; margin-bottom: 4px;">${{node.id}}</div>
+                    <div style="font-size:0.9rem; color: #fff; margin-bottom: 4px;">${{node.name}}</div>
+                    <div style="font-size:0.75rem; color: #8892b0; font-family: 'JetBrains Mono', monospace;">${{node.desc}}</div>
+                </div>`)
+            .nodeColor(node => node.color)
+            .nodeVal(node => node.val)
+            .linkColor(() => 'rgba(100,80,255,0.6)')
+            .linkWidth(2)
+            .linkDirectionalParticles(2)
+            .linkDirectionalParticleSpeed(0.005)
+            .backgroundColor('#050510');
+        
+        Graph.d3Force('charge').strength(-150);
+        Graph.d3Force('link').distance(120);
+    </script>
+</body>
+</html>'''
+
+    with open(website_dir / "visualization.html", "w") as f:
+        f.write(viz_html)
 
     with open(website_dir / "index.html", "w") as f:
         f.write(html)

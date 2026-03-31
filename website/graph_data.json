@@ -356,6 +356,41 @@
       "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
       "color": "#33ff33",
       "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p15",
+      "name": "Result: The M\u00f6bius Identity [Iter 16]",
+      "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p16",
+      "name": "Result: Fibridge Compression Limit (DFA) [Iter 17]",
+      "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p17",
+      "name": "Result: Phase Propagation Topology (PPT) [Iter 18]",
+      "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p18",
+      "name": "Result: The Scalar Ground State [Iter 19]",
+      "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p19",
+      "name": "Result: The Arc Vector [Iter 20]",
+      "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
+      "color": "#33ff33",
+      "val": 15
     }
   ],
   "links": [
@@ -501,63 +536,163 @@
     },
     {
       "source": "2026-03-31_c6_p0",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p0",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p1",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p1",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p2",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p2",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p3",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p3",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p4",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p4",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p5",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p5",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p6",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p6",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p7",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p7",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p8",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p8",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p9",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p9",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p10",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p10",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p11",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p11",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p12",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p12",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p13",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p13",
+      "target": "MasterEq"
     },
     {
       "source": "2026-03-31_c6_p14",
-      "target": "The Scalar Ground State"
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p14",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p15",
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p15",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p16",
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p16",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p17",
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p17",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p18",
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p18",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p19",
+      "target": "L6"
+    },
+    {
+      "source": "2026-03-31_c6_p19",
+      "target": "MasterEq"
     }
   ]
 }
