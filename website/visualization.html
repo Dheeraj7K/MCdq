@@ -3,17 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DKB Phase Framework | 3D System Map</title>
+    <title>DKB Phase Framework | Multi-Perspective Map</title>
     <script src="https://unpkg.com/3d-force-graph"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; background: #050510; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; }
         #3d-graph { width: 100vw; height: 100vh; }
+        
+        /* ── UI OVERLAYS ── */
         .overlay { position: absolute; top: 24px; left: 24px; z-index: 10; pointer-events: none; }
         .nav-back { pointer-events: auto; text-decoration: none; color: #6450ff; font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; display: block; }
         .title { font-size: 2.2rem; font-weight: 900; margin: 0; letter-spacing: -0.02em; }
         .subtitle { font-size: 1rem; color: #8892b0; margin-top: 4px; opacity: 0.8; }
         #node-counter { margin-top: 16px; font-family: 'JetBrains Mono', monospace; color: #00ccff; font-size: 0.9rem; font-weight: 700; background: rgba(100,80,255,0.1); padding: 8px 16px; border-radius: 8px; display: inline-block; border: 1px solid rgba(100,80,255,0.2); pointer-events: auto; }
+
+        /* ── CONTROLS PANEL ── */
+        .controls { 
+            position: absolute; top: 24px; right: 24px; z-index: 100; 
+            background: rgba(10, 10, 31, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid rgba(100, 80, 255, 0.3); border-radius: 16px;
+            padding: 20px; width: 280px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .control-group { margin-bottom: 20px; }
+        .control-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8892b0; font-weight: 800; margin-bottom: 12px; display: block; }
+        .btn-tabs { display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 8px; }
+        .btn-tab { 
+            flex: 1; border: none; background: transparent; color: #8892b0; 
+            padding: 8px; font-size: 0.8rem; font-weight: 700; border-radius: 6px; 
+            cursor: pointer; transition: 0.2s; 
+        }
+        .btn-tab.active { background: #6450ff; color: #fff; }
+        
+        .slider-container { display: flex; align-items: center; gap: 12px; }
+        input[type="range"] { flex: 1; accent-color: #6450ff; cursor: pointer; }
+        
         .legend { position: absolute; bottom: 24px; left: 24px; z-index: 10; padding: 16px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-size: 0.8rem; }
         .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
         .dot { width: 8px; height: 8px; border-radius: 50%; }
@@ -22,11 +45,38 @@
 <body>
     <div class="overlay">
         <a href="index.html" class="nav-back">← Back to Feed</a>
-        <h1 class="title">DKB System Map 3D</h1>
-        <p class="subtitle">Live Architecture: Theory ⟷ Breakthroughs</p>
+        <h1 class="title">DKB System Map</h1>
+        <p class="subtitle">Multi-Perspective Theory Architecture</p>
         <div id="node-counter">Nodes: <span id="node-count">64</span></div>
     </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <span class="control-label">Perspective</span>
+            <div class="btn-tabs">
+                <button class="btn-tab active" onclick="setView(3)">3D Space</button>
+                <button class="btn-tab" onclick="setView(2)">2D Plane</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <span class="control-label">Topology Layout</span>
+            <div class="btn-tabs">
+                <button class="btn-tab active" onclick="setLayout(null)">Cosmic</button>
+                <button class="btn-tab" onclick="setLayout('td')">Top-Down</button>
+                <button class="btn-tab" onclick="setLayout('radialout')">Radial</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <span class="control-label">Interconnectedness (Opacity)</span>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="40" oninput="setOpacity(this.value)">
+                <span id="opacity-val" style="font-family: monospace; font-size:0.8rem; min-width:30px;">0.4</span>
+            </div>
+        </div>
+    </div>
+
     <div id="3d-graph"></div>
+
     <div class="legend">
         <div class="legend-item"><div class="dot" style="background:#ff33cc"></div> Master Equation</div>
         <div class="legend-item"><div class="dot" style="background:#ffcc00"></div> Mega Nodes (12 Levels)</div>
@@ -35,6 +85,7 @@
         <div class="legend-item"><div class="dot" style="background:#00ccff"></div> Meta Emerged Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#33ff33"></div> Impact Breakthroughs</div>
     </div>
+
     <script>
         const graphData = {
   "nodes": [
@@ -822,6 +873,8 @@
     }
   ]
 };
+        let currentOpacity = 0.4;
+        
         const Graph = ForceGraph3D()(document.getElementById('3d-graph'))
             .graphData(graphData)
             .nodeLabel(node => `
@@ -832,7 +885,7 @@
                 </div>`)
             .nodeColor(node => node.color)
             .nodeVal(node => node.val)
-            .linkColor(() => 'rgba(100,80,255,0.6)')
+            .linkColor(() => `rgba(100,80,255,${currentOpacity})`)
             .linkWidth(2)
             .linkDirectionalParticles(2)
             .linkDirectionalParticleSpeed(0.005)
@@ -840,6 +893,28 @@
         
         Graph.d3Force('charge').strength(-150);
         Graph.d3Force('link').distance(120);
+
+        function setView(dims) {
+            Graph.numDimensions(dims);
+            document.querySelectorAll('.control-group:nth-child(1) .btn-tab').forEach((btn, i) => {
+                btn.classList.toggle('active', (dims === 3 && i === 0) || (dims === 2 && i === 1));
+            });
+        }
+
+        function setLayout(mode) {
+            Graph.dagMode(mode);
+            if (mode) Graph.dagLevelDistance(200);
+            document.querySelectorAll('.control-group:nth-child(2) .btn-tab').forEach((btn, i) => {
+                const modes = [null, 'td', 'radialout'];
+                btn.classList.toggle('active', modes[i] === mode);
+            });
+        }
+
+        function setOpacity(val) {
+            currentOpacity = val / 100;
+            document.getElementById('opacity-val').innerText = currentOpacity.toFixed(1);
+            Graph.linkColor(Graph.linkColor()); // Refresh
+        }
     </script>
 </body>
 </html>
