@@ -9,6 +9,9 @@ on:
   workflow_dispatch:
     # Allows you to click a button on GitHub to trigger a manual run
 
+permissions:
+  contents: write
+
 jobs:
   generator:
     runs-on: ubuntu-latest
