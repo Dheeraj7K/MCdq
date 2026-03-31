@@ -292,14 +292,21 @@ def _build_website(posts: list, theory: dict):
     def post_card(p: dict) -> str:
         img  = p.get("image_path", "")
         title = p.get("title", "")
-        body  = p.get("body", "")[:120] + "..."
+        body  = p.get("body", "")
         theme = p.get("theme", "")
         cirq_imp = p.get("quantum", {}).get("cirq", {}).get("improvement_pct", 895)
-        return f'''<div class="post-card" onclick="openPost({json.dumps(p)})">
+        
+        # Safely escape JSON for HTML attribute
+        p_json = json.dumps(p).replace('"', '&quot;')
+        
+        return f'''<div class="post-card" onclick="openPostById('{p_json}')">
           <div class="post-img-wrap"><img src="{img}" alt="{title}" loading="lazy" onerror="this.style.display='none'"></div>
           <div class="post-meta"><span class="theme-badge">{theme}</span><span class="cirq-badge">⟁ +{cirq_imp}%</span></div>
           <div class="post-title">{title}</div>
           <div class="post-body">{body}</div>
+          <div class="card-footer">
+            <div class="info-btn" title="Read Full Analysis">i</div>
+          </div>
         </div>'''
 
     cards_html = "\n".join(post_card(p) for p in posts[:100])
@@ -526,7 +533,39 @@ def _build_website(posts: list, theory: dict):
   }}
   .post-body {{
     font-size: 0.82rem; color: var(--muted); line-height: 1.5;
+    padding: 0 16px 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }}
+  .card-footer {{
     padding: 0 16px 16px;
+    display: flex;
+    justify-content: flex-end;
+  }}
+  .info-btn {{
+    background: var(--glow);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(100,80,255,0.1);
+  }}
+  .info-btn:hover {{
+    background: var(--accent);
+    color: var(--text);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(100,80,255,0.3);
   }}
 
   /* ── SIDEBAR ── */
@@ -746,6 +785,10 @@ def _build_website(posts: list, theory: dict):
 </footer>
 
 <script>
+function openPostById(postJson) {{
+  const post = JSON.parse(postJson.replace(/&quot;/g, '"'));
+  openPost(post);
+}}
 function openPost(post) {{
   document.getElementById('modalTheme').textContent = post.theme + ' · Cycle ' + (post.cycle+1) + '/7';
   document.getElementById('modalTitle').textContent = post.title;
