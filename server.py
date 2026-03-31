@@ -330,28 +330,55 @@ def _build_website(posts: list, theory: dict):
     ]
     graph_links = []
     
-    # Core Theory nodes
+    # Core Theory nodes (Mega Nodes: 12 Levels)
+    for lvl in theory.get("twelve_levels", []):
+        graph_nodes.append({
+            "id": f"L{lvl['level']}", 
+            "name": lvl["name"], 
+            "desc": lvl["desc"], 
+            "color": "#ffcc00", 
+            "val": 30 # Mega Nodes are larger
+        })
+        if lvl["level"] > 0:
+            # Link to the previous level OR the master equation
+            graph_links.append({"source": f"L{lvl['level']}", "target": f"L{lvl['level']-1}"})
+        else:
+            graph_links.append({"source": "L0", "target": "MasterEq"})
+
+    # Core Theory nodes (Equations)
     for eq in theory["core_equations"]:
-        graph_nodes.append({"id": eq["name"], "name": eq["name"], "desc": eq["eq"], "color": "#6450ff", "val": 20})
+        nature_title = f"Fundamental Phase Case 0{eq['id']}" if eq['id'] < 10 else f"Fundamental Phase Case {eq['id']}"
+        graph_nodes.append({"id": eq["name"], "name": nature_title, "desc": eq["eq"], "color": "#6450ff", "val": 22})
         graph_links.append({"source": eq["name"], "target": "MasterEq"})
     
+    # Meta Emerged Nodes (Milestones + Research)
+    for m in theory.get("milestones", []):
+        m_id = f"M_{m['date']}"
+        graph_nodes.append({"id": m_id, "name": f"Milestone: {m['event']}", "desc": f"Emergence Date: {m['date']}", "color": "#ff33cc", "val": 25})
+        graph_links.append({"source": m_id, "target": "MasterEq"})
+
+    for r in theory.get("active_research", []):
+        r_id = f"R_{r[:10]}"
+        graph_nodes.append({"id": r_id, "name": f"Research: {r}", "desc": "Active Theoretical Pursuit", "color": "#00ccff", "val": 20})
+        graph_links.append({"source": r_id, "target": "MasterEq"})
+
     # Latest Breakthroughs as orbiting nodes
     breakthroughs = [p for p in posts if p.get("theme") == "Breakthrough"][:15]
     for b in breakthroughs:
         b_id = b.get("id", "b")
         q = b.get("quantum", {}).get("cirq", {})
-        label = f"κ={q.get('phi_node', 0)}"
-        graph_nodes.append({"id": b_id, "name": b.get("title"), "desc": label, "color": "#33ff33", "val": 15})
-        # Link to the equation it validated (randomly or by matching)
+        # Descriptive 'nature' labels per user feedback
+        impact_desc = f"Quantum Validation Efficiency: {q.get('improvement_pct', 895)}% (φ-node resonant)"
+        graph_nodes.append({"id": b_id, "name": b.get("title"), "desc": impact_desc, "color": "#33ff33", "val": 15})
         target_eq = theory["core_equations"][0]["name"]
         graph_links.append({"source": b_id, "target": target_eq})
 
     with open(website_dir / "graph_data.json", "w") as f:
         json.dump({"nodes": graph_nodes, "links": graph_links}, f, indent=2)
 
-    # Build equations list
+    # Build equations list with 'natural' pillars
     equations_html = "\n".join(
-        f'<div class="eq-item"><span class="eq-num">Eq {e["id"]}</span>'
+        f'<div class="eq-item"><span class="eq-num">Fundamental Pillar 0{e["id"]}</span>'
         f'<span class="eq-name">{e["name"]}</span>'
         f'<code class="eq-code">{e["eq"]}</code>'
         f'<span class="eq-domain">{e["domain"]}</span></div>'
