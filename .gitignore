@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+website/node_modules/
+data/posts/
+# Keep data/theory.json but avoid tracking every single auto-generated cycle post if the user wants purely the engine.
+# Actually, the user might want the history. I'll leave data/posts for now unless it's too big.
+# I'll exclude images since they are regenerated.
+website/images/
+.matplotlib/
+.cache/
+.fontconfig/
