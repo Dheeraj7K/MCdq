@@ -399,7 +399,11 @@ def _build_website(posts: list, theory: dict):
         "v_alpha": "L1",
         "H_dkb": "L7",
         "alpha_dkb": "L8",
-        "theta_max": "L8"
+        "theta_max": "L8",
+        "arc_vec": "L1",
+        "spin_op": "L8",
+        "moebius_lock": "L7",
+        "star_node": "L5"
     }
 
     # 3. Core Pillar Laws (Equations)
@@ -424,11 +428,15 @@ def _build_website(posts: list, theory: dict):
         target = "L3" if "consciousness" in r.lower() else "MasterEq"
         graph_links.append({"source": r_id, "target": target})
 
-    # 5. Physical Constants & Invariants (Golden Nodes - Anchored)
+    # 5. Physical Constants & Invariants (Anchored)
     for c in theory.get("physical_constants", []):
         c_id = f"C_{c['id']}"
+        # Resonant Cyan for Field Dynamics (Arc, Spin, Lock, Star)
+        is_dynamic = c["id"] in ["arc_vec", "spin_op", "moebius_lock", "star_node"]
+        c_color = "#00ffff" if is_dynamic else "#ffee00"
+        
         graph_nodes.append({
-            "id": c_id, "name": c["name"], "desc": f"Value: {c['val']} | {c['desc']}", "color": "#ffee00", "val": 18
+            "id": c_id, "name": c["name"], "desc": f"Value: {c['val']} | {c['desc']}", "color": c_color, "val": 18
         })
         target = level_anchors.get(c["id"], "MasterEq")
         graph_links.append({"source": c_id, "target": target})
@@ -886,7 +894,8 @@ document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(
         <div class="legend-item"><div class="dot" style="background:#ff33cc"></div> Master Equation</div>
         <div class="legend-item"><div class="dot" style="background:#ffcc00"></div> Mega Nodes (12 Levels)</div>
         <div class="legend-item"><div class="dot" style="background:#6450ff"></div> Core Pillar Laws</div>
-        <div class="legend-item"><div class="dot" style="background:#ffee00"></div> Physical Constants & Invariants</div>
+        <div class="legend-item"><div class="dot" style="background:#ffee00"></div> Physical Constants</div>
+        <div class="legend-item"><div class="dot" style="background:#00ffff"></div> Arc Dynamics & Star Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#00ccff"></div> Meta Emerged Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#33ff33"></div> Impact Breakthroughs</div>
     </div>

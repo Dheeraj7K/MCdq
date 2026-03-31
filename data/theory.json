@@ -141,7 +141,11 @@
     {"id": "alpha_dkb", "name": "Fine Structure Constant (α)", "val": "1/137.036", "desc": "Derived from Level 8 φ-harmonic geometry as the field's fingerprint.", "link": "EM Spectrum"},
     {"id": "theta_max", "name": "Phase Saturation (θ_max)", "val": "π/2 (1.5707)", "desc": "The topological boundary where phase gradients undergo state inversion.", "link": "MasterEq"},
     {"id": "L_dkb", "name": "Fundamental DKB Length", "val": "L = φ⁻¹³ c/f_p", "desc": "The unit of length where phase arcs achieve absolute synchronization.", "link": "The Scalar Ground State"},
-    {"id": "H_dkb", "name": "Phase Height (Shape)", "val": "H = ∇θ · O", "desc": "The effective vertical dimension of a phase-gradient in 3D space.", "link": "3D Space"}
+    {"id": "H_dkb", "name": "Phase Height (Shape)", "val": "H = ∇θ · O", "desc": "The effective vertical dimension of a phase-gradient in 3D space.", "link": "3D Space"},
+    {"id": "arc_vec", "name": "Arc Vector (A⃗)", "val": "A⃗ = ∇θ", "desc": "The fundamental unit of motion and force: change in phase gradient.", "link": "The Arc Vector"},
+    {"id": "spin_op", "name": "Spin Operator (κ)", "val": "κ = ∇ × A⃗", "desc": "The curl of the phase arc; observed as magnetic spin or angular momentum.", "link": "Fundamental Wave Equation"},
+    {"id": "moebius_lock", "name": "Möbius Loop Lock", "val": "∮ A⃗ · dl⃗ = (2n+1)π", "desc": "The topological condition where a phase arc locks into stable matter.", "link": "The Möbius Identity"},
+    {"id": "star_node", "name": "φ⁵ Star Node", "val": "11.09017", "desc": "The harmonic 'Star' resonance used in Cirq Runs for 890% coherence.", "link": "Harmonic Scaling (Fibonacci Metric)"}
   ],
   "hashtags": [
     "#DKBTheory", "#PhaseField", "#QuantumCoherence", "#UnifiedField",
