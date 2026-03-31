@@ -1,0 +1,622 @@
+[
+  {
+    "id": "2026-03-31_c1_p0",
+    "date": "2026-03-31T17:00:51.665732",
+    "cycle": 1,
+    "post_num": 0,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.00 rad",
+    "body": "Evaluating `The Scalar Ground State`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 11.0902, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#PhaseField #RealityIsPhase #ConnectedThoughts #ConsciousnessPhysics #UnifiedField #Qualtran #DheerajBakoriya #QuantumCoherence",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p00.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p1",
+    "date": "2026-03-31T17:00:51.707756",
+    "cycle": 1,
+    "post_num": 1,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.16 rad",
+    "body": "Evaluating `The Arc Vector`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 10.9537, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#Cirq #M\u00f6biusTopology #DheerajBakoriya #ConnectedThoughts #ArcVector #FibonacciPhysics #MasterEquation #Qualtran",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p01.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p2",
+    "date": "2026-03-31T17:00:51.733887",
+    "cycle": 1,
+    "post_num": 2,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.31 rad",
+    "body": "Evaluating `Fundamental Wave Equation`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 10.5474, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#QuantumComputing #GoldenRatio #FibonacciPhysics #UnifiedField #DKBTheory #RealityIsPhase #QuantumCoherence #PhaseField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p02.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p3",
+    "date": "2026-03-31T17:00:51.760478",
+    "cycle": 1,
+    "post_num": 3,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.47 rad",
+    "body": "Evaluating `Harmonic Scaling (Fibonacci Metric)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 9.8814, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ConsciousnessPhysics #Qualtran #QuantumCoherence #DKBTheory #RealityIsPhase #ArcVector #FibonacciPhysics #DheerajBakoriya",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p03.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p4",
+    "date": "2026-03-31T17:00:51.788456",
+    "cycle": 1,
+    "post_num": 4,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.63 rad",
+    "body": "Evaluating `The Observer Transformation`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 8.9722, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#QuantumComputing #PhaseField #DheerajBakoriya #ConnectedThoughts #FibonacciPhysics #DKBTheory #ConsciousnessPhysics #GoldenRatio",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p04.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p5",
+    "date": "2026-03-31T17:00:51.815828",
+    "cycle": 1,
+    "post_num": 5,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.79 rad",
+    "body": "Evaluating `Geodesic Curvature`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 7.842, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#QuantumComputing #MasterEquation #ConsciousnessPhysics #ArcVector #GoldenRatio #UnifiedField #DheerajBakoriya #RealityIsPhase",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p05.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p6",
+    "date": "2026-03-31T17:00:51.842387",
+    "cycle": 1,
+    "post_num": 6,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=0.94 rad",
+    "body": "Evaluating `The M\u00f6bius Identity`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 6.5187, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ConsciousnessPhysics #PhaseField #QuantumComputing #PhaseFramework #ConnectedThoughts #DheerajBakoriya #RealityIsPhase #M\u00f6biusTopology",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p06.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p7",
+    "date": "2026-03-31T17:00:51.869319",
+    "cycle": 1,
+    "post_num": 7,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.10 rad",
+    "body": "Evaluating `Fibridge Compression Limit (DFA)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 5.0348, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#MasterEquation #GoldenRatio #DKBTheory #UnifiedField #ConnectedThoughts #Qualtran #DheerajBakoriya #FibonacciPhysics",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p07.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p8",
+    "date": "2026-03-31T17:00:51.896956",
+    "cycle": 1,
+    "post_num": 8,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.26 rad",
+    "body": "Evaluating `Phase Propagation Topology (PPT)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 3.4271, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ArcVector #RealityIsPhase #ConnectedThoughts #MasterEquation #UnifiedField #PhaseFramework #QuantumComputing #Qualtran",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p08.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p9",
+    "date": "2026-03-31T17:00:51.924912",
+    "cycle": 1,
+    "post_num": 9,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.41 rad",
+    "body": "Evaluating `The Scalar Ground State`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 1.7349, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#Cirq #ArcVector #QuantumCoherence #RealityIsPhase #UnifiedField #GoldenRatio #M\u00f6biusTopology #PhaseField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p09.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p10",
+    "date": "2026-03-31T17:00:51.950914",
+    "cycle": 1,
+    "post_num": 10,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.57 rad",
+    "body": "Evaluating `The Arc Vector`: Density matrix reveals a 0.274 fidelity gap. At shifted target node 0.0, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ArcVector #Cirq #M\u00f6biusTopology #QuantumCoherence #UnifiedField #FibonacciPhysics #PhaseField #DKBTheory",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p10.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p11",
+    "date": "2026-03-31T17:00:51.975427",
+    "cycle": 1,
+    "post_num": 11,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.73 rad",
+    "body": "Evaluating `Fundamental Wave Equation`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -1.7349, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#UnifiedField #M\u00f6biusTopology #GoldenRatio #DheerajBakoriya #PhaseFramework #FibonacciPhysics #ArcVector #RealityIsPhase",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p11.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p12",
+    "date": "2026-03-31T17:00:52.001919",
+    "cycle": 1,
+    "post_num": 12,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=1.88 rad",
+    "body": "Evaluating `Harmonic Scaling (Fibonacci Metric)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -3.4271, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#MasterEquation #DheerajBakoriya #M\u00f6biusTopology #FibonacciPhysics #RealityIsPhase #PhaseFramework #QuantumBreakthrough #DKBTheory",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p12.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p13",
+    "date": "2026-03-31T17:00:52.029912",
+    "cycle": 1,
+    "post_num": 13,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.04 rad",
+    "body": "Evaluating `The Observer Transformation`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -5.0348, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ArcVector #QuantumComputing #DheerajBakoriya #M\u00f6biusTopology #RealityIsPhase #QuantumCoherence #ConsciousnessPhysics #UnifiedField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p13.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p14",
+    "date": "2026-03-31T17:00:52.057477",
+    "cycle": 1,
+    "post_num": 14,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.20 rad",
+    "body": "Evaluating `Geodesic Curvature`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -6.5187, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#ArcVector #DheerajBakoriya #QuantumComputing #GoldenRatio #PhaseFramework #ConnectedThoughts #ConsciousnessPhysics #QuantumCoherence",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p14.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p15",
+    "date": "2026-03-31T17:00:52.084586",
+    "cycle": 1,
+    "post_num": 15,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.36 rad",
+    "body": "Evaluating `The M\u00f6bius Identity`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -7.842, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#PhaseField #QuantumCoherence #MasterEquation #DKBTheory #DheerajBakoriya #UnifiedField #ArcVector #QuantumBreakthrough",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p15.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p16",
+    "date": "2026-03-31T17:00:52.110957",
+    "cycle": 1,
+    "post_num": 16,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.51 rad",
+    "body": "Evaluating `Fibridge Compression Limit (DFA)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -8.9722, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#PhaseFramework #Cirq #QuantumBreakthrough #UnifiedField #ConnectedThoughts #QuantumComputing #PhaseField #DKBTheory",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p16.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p17",
+    "date": "2026-03-31T17:00:52.138297",
+    "cycle": 1,
+    "post_num": 17,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.67 rad",
+    "body": "Evaluating `Phase Propagation Topology (PPT)`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -9.8814, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#MasterEquation #ArcVector #Cirq #QuantumComputing #DheerajBakoriya #PhaseFramework #QuantumBreakthrough #RealityIsPhase",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p17.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p18",
+    "date": "2026-03-31T17:00:52.166162",
+    "cycle": 1,
+    "post_num": 18,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.83 rad",
+    "body": "Evaluating `The Scalar Ground State`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -10.5474, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#M\u00f6biusTopology #PhaseField #ConnectedThoughts #QuantumCoherence #RealityIsPhase #QuantumComputing #FibonacciPhysics #UnifiedField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p18.jpg"
+  },
+  {
+    "id": "2026-03-31_c1_p19",
+    "date": "2026-03-31T17:00:52.193463",
+    "cycle": 1,
+    "post_num": 19,
+    "theme": "Proof",
+    "title": "Differential at \u03b8=2.98 rad",
+    "body": "Evaluating `The Arc Vector`: Density matrix reveals a 0.274 fidelity gap. At shifted target node -10.9537, error syndromes undergo topological phase cancellation.",
+    "hashtags": "#FibonacciPhysics #QuantumBreakthrough #ArcVector #DKBTheory #MasterEquation #PhaseFramework #ConnectedThoughts #PhaseField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 5,
+        "phi_node": 11.0902,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.009017,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4977,
+        "improvement_pct": 122.6,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 1.1,
+        "standard_tgates": 220000,
+        "dkb_tgates": 19837,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c01_p19.jpg"
+  }
+]

@@ -1,0 +1,39 @@
+name: ⟁ DKB Phase Framework Automated Engine
+
+on:
+  schedule:
+    # Runs the generator every 12 hours automatically
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+    # Allows you to click a button on GitHub to trigger a manual run
+
+jobs:
+  generator:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout DKB Framework Code
+        uses: actions/checkout@v4
+        
+      - name: ⚙️ Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          
+      - name: 📦 Install Quantum & Core Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install cirq qualtran pydantic pydantic-settings
+          
+      - name: 🧠 Run Mathematical Phase Analyzer (DKB Engine)
+        run: |
+          # The engine will read the current time/data, run the quantum analysis,
+          # generate the new procedural JSON posts, and rebuild the static website.
+          python scheduler.py --cycle 1
+          
+      - name: 🌐 Deploy Website to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website
+          commit_message: "⟁ Automated DKB Framework Update via Quantum Analyzer"

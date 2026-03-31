@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "dkb-connected-thoughts": {
+      "command": "/Users/dbakoriya/mcdp/.venv/bin/python3",
+      "args": ["/Users/dbakoriya/mcdp/server.py"],
+      "env": {
+        "MPLCONFIGDIR": "/tmp/mpl",
+        "PYTHONPATH": "/Users/dbakoriya/mcdp"
+      }
+    }
+  }
+}

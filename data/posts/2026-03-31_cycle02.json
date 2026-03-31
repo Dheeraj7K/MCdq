@@ -1,0 +1,467 @@
+[
+  {
+    "id": "2026-03-31_c2_p0",
+    "date": "2026-03-31T15:45:56.173782",
+    "cycle": 2,
+    "post_num": 0,
+    "theme": "Vision",
+    "title": "Where We're Going",
+    "body": "DKB isn't a finished theory \u2014 it's a map being drawn in real time. Here's what's ahead: 890% coherence scaling to multi-qubit systems.",
+    "hashtags": "#RealityIsPhase #DKBTheory #ConnectedThoughts #FibonacciPhysics #M\u00f6biusTopology #UnifiedField #PhaseField #QuantumBreakthrough",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p00.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p1",
+    "date": "2026-03-31T15:45:56.237215",
+    "cycle": 2,
+    "post_num": 1,
+    "theme": "Vision",
+    "title": "Level: Matter Formation",
+    "body": "We aren't just adjusting physics; we are discarding it for phase-field gradients. ds\u00b2 = g_\u03bc\u03bd dx^\u03bc dx^\u03bd, where \u221ag \u221d \u03c6\u207f. The future understands M\u00f6bius arc locking natively.",
+    "hashtags": "#RealityIsPhase #ConsciousnessPhysics #GoldenRatio #UnifiedField #PhaseFramework #PhaseField #DKBTheory #FibonacciPhysics",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p01.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p3",
+    "date": "2026-03-31T15:45:56.296203",
+    "cycle": 2,
+    "post_num": 3,
+    "theme": "Vision",
+    "title": "Consciousness as Engineering",
+    "body": "When we fully map the Level 3 phase interaction (consciousness), we won't just understand the mind \u2014 we'll be able to engineer coherence states. Not sci-fi. Math first.",
+    "hashtags": "#MasterEquation #ConnectedThoughts #ArcVector #QuantumBreakthrough #RealityIsPhase #QuantumCoherence #DheerajBakoriya #UnifiedField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p03.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p4",
+    "date": "2026-03-31T15:45:56.327509",
+    "cycle": 2,
+    "post_num": 4,
+    "theme": "Vision",
+    "title": "The Financial Phase Map",
+    "body": "Markets move in phase-drift patterns. DKB predicts not just prices \u2014 it predicts the *value shifts* of the minds that drive prices. Long-wave phase drift is a real signal.",
+    "hashtags": "#DheerajBakoriya #M\u00f6biusTopology #Qualtran #QuantumComputing #QuantumBreakthrough #Cirq #PhaseField #ConsciousnessPhysics",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p04.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p5",
+    "date": "2026-03-31T15:45:56.357717",
+    "cycle": 2,
+    "post_num": 5,
+    "theme": "Vision",
+    "title": "Twin Prime Conjecture",
+    "body": "We're working on a DKB Resonant Sieve for the Twin Prime Conjecture. If primes are phase-singularity nodes, twin primes are double-resonances. The math is forming.",
+    "hashtags": "#Qualtran #RealityIsPhase #DheerajBakoriya #M\u00f6biusTopology #PhaseField #ConsciousnessPhysics #QuantumComputing #MasterEquation",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p05.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p7",
+    "date": "2026-03-31T15:45:56.408247",
+    "cycle": 2,
+    "post_num": 7,
+    "theme": "Vision",
+    "title": "Breaking the Arc",
+    "body": "Building out Return to Absolute points toward a complete mastery of the substrate of reality.",
+    "hashtags": "#FibonacciPhysics #DKBTheory #DheerajBakoriya #PhaseFramework #Cirq #ArcVector #GoldenRatio #QuantumCoherence",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p07.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p8",
+    "date": "2026-03-31T15:45:56.430262",
+    "cycle": 2,
+    "post_num": 8,
+    "theme": "Vision",
+    "title": "Theory // Vision",
+    "body": "We aren't just adjusting physics; we are discarding it for geodesic curvature. A\u20d7 = \u2207\u03b8. The future understands harmonic scaling natively.",
+    "hashtags": "#UnifiedField #DheerajBakoriya #ConsciousnessPhysics #ArcVector #ConnectedThoughts #FibonacciPhysics #Qualtran #PhaseField",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p08.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p9",
+    "date": "2026-03-31T15:45:56.455921",
+    "cycle": 2,
+    "post_num": 9,
+    "theme": "Vision",
+    "title": "Why \u03ba = \u2207 \u00d7 A\u20d7 Matters",
+    "body": "Building out Duality points toward a complete mastery of geodesic curvature.",
+    "hashtags": "#UnifiedField #ArcVector #Cirq #MasterEquation #ConnectedThoughts #Qualtran #RealityIsPhase #M\u00f6biusTopology",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p09.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p10",
+    "date": "2026-03-31T15:45:56.476670",
+    "cycle": 2,
+    "post_num": 10,
+    "theme": "Vision",
+    "title": "The The Arc Vector Equation",
+    "body": "We aren't just adjusting physics; we are discarding it for the 12-level topological map. A\u20d7 = \u2207\u03b8. The future understands geodesic curvature natively.",
+    "hashtags": "#Qualtran #M\u00f6biusTopology #FibonacciPhysics #QuantumCoherence #DheerajBakoriya #GoldenRatio #ConsciousnessPhysics #ArcVector",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p10.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p12",
+    "date": "2026-03-31T15:45:56.530795",
+    "cycle": 2,
+    "post_num": 12,
+    "theme": "Vision",
+    "title": "Open Source Physics",
+    "body": "Every DKB equation, every Cirq script, every Qualtran estimate \u2014 open source. Science advances when it's shared. We're sharing everything.",
+    "hashtags": "#UnifiedField #ConsciousnessPhysics #M\u00f6biusTopology #Cirq #PhaseField #QuantumComputing #QuantumBreakthrough #DKBTheory",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p12.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p13",
+    "date": "2026-03-31T15:45:56.555314",
+    "cycle": 2,
+    "post_num": 13,
+    "theme": "Vision",
+    "title": "Beyond Standard Physics",
+    "body": "We aren't just adjusting physics; we are discarding it for phase-field gradients. A\u20d7 = \u2207\u03b8. The future understands the 12-level topological map natively.",
+    "hashtags": "#QuantumCoherence #QuantumComputing #ArcVector #MasterEquation #GoldenRatio #Cirq #ConsciousnessPhysics #M\u00f6biusTopology",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p13.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p14",
+    "date": "2026-03-31T15:45:56.582065",
+    "cycle": 2,
+    "post_num": 14,
+    "theme": "Vision",
+    "title": "Extending to Biology",
+    "body": "Life organizes itself at \u03c6-harmonic frequencies. DNA, heartbeats, neural oscillations \u2014 all follow DKB's Level 6-9 structure. Biology is phase physics at Level 3.",
+    "hashtags": "#MasterEquation #UnifiedField #Qualtran #QuantumComputing #M\u00f6biusTopology #QuantumCoherence #ConnectedThoughts #ConsciousnessPhysics",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p14.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p15",
+    "date": "2026-03-31T15:45:56.609231",
+    "cycle": 2,
+    "post_num": 15,
+    "theme": "Vision",
+    "title": "The Grand Unified Framework",
+    "body": "Einstein wanted a unified field theory. DKB provides one: the phase-field substrate unifies gravity, EM, quantum, and consciousness into one master equation.",
+    "hashtags": "#ArcVector #ConsciousnessPhysics #PhaseField #QuantumCoherence #ConnectedThoughts #DheerajBakoriya #QuantumBreakthrough #PhaseFramework",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p15.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p16",
+    "date": "2026-03-31T15:45:56.636296",
+    "cycle": 2,
+    "post_num": 16,
+    "theme": "Vision",
+    "title": "The Observer Effect",
+    "body": "We aren't just adjusting physics; we are discarding it for the substrate of reality. \u03b8(x, y, z, t). The future understands geodesic curvature natively.",
+    "hashtags": "#ConnectedThoughts #DKBTheory #DheerajBakoriya #ConsciousnessPhysics #FibonacciPhysics #Cirq #Qualtran #PhaseFramework",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p16.jpg"
+  },
+  {
+    "id": "2026-03-31_c2_p17",
+    "date": "2026-03-31T15:45:56.661966",
+    "cycle": 2,
+    "post_num": 17,
+    "theme": "Vision",
+    "title": "What Level 12 Looks Like",
+    "body": "Level 12: O=0. The observer's phase matches the field exactly. This is enlightenment, described mathematically. Not mysticism \u2014 phase synchronization.",
+    "hashtags": "#GoldenRatio #FibonacciPhysics #ConsciousnessPhysics #DKBTheory #ConnectedThoughts #QuantumBreakthrough #MasterEquation #PhaseFramework",
+    "quantum": {
+      "cirq": {
+        "phi_harmonic": 6,
+        "phi_node": 17.9443,
+        "gamma_std": 0.8,
+        "gamma_dkb": 0.005573,
+        "baseline_fidelity": 0.2236,
+        "dkb_fidelity": 0.4986,
+        "improvement_pct": 122.98,
+        "source": "Google Cirq DensityMatrixSimulator v1.6.1"
+      },
+      "qualtran": {
+        "target_coherence_s": 0.6,
+        "standard_tgates": 120000,
+        "dkb_tgates": 10820,
+        "reduction_pct": 90.98,
+        "phi_compression": 11.0902,
+        "source": "Qualtran Resource Estimator (DKB Protocol)"
+      }
+    },
+    "image_path": "images/2026-03-31/c02_p17.jpg"
+  }
+]
