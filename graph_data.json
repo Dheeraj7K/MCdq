@@ -1,0 +1,277 @@
+{
+  "nodes": [
+    {
+      "id": "MasterEq",
+      "name": "The Master Phase Equation",
+      "desc": "Reality = O(\u2207\u03b8)",
+      "color": "#ff33cc",
+      "val": 30
+    },
+    {
+      "id": "The Scalar Ground State",
+      "name": "The Scalar Ground State",
+      "desc": "\u03b8(x, y, z, t)",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "The Arc Vector",
+      "name": "The Arc Vector",
+      "desc": "A\u20d7 = \u2207\u03b8",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "Fundamental Wave Equation",
+      "name": "Fundamental Wave Equation",
+      "desc": "\u2202\u00b2\u03b8/\u2202t\u00b2 = c\u00b2\u2207\u00b2\u03b8",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "Harmonic Scaling (Fibonacci Metric)",
+      "name": "Harmonic Scaling (Fibonacci Metric)",
+      "desc": "ds\u00b2 = g_\u03bc\u03bd dx^\u03bc dx^\u03bd, where \u221ag \u221d \u03c6\u207f",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "The Observer Transformation",
+      "name": "The Observer Transformation",
+      "desc": "\u03b8' = \u03b8 - O(x\u20d7, v\u20d7, t)",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "Geodesic Curvature",
+      "name": "Geodesic Curvature",
+      "desc": "\u03ba = \u2207 \u00d7 A\u20d7",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "The M\u00f6bius Identity",
+      "name": "The M\u00f6bius Identity",
+      "desc": "\u222e A\u20d7 \u00b7 dl\u20d7 = (2n+1)\u03c0",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "Fibridge Compression Limit (DFA)",
+      "name": "Fibridge Compression Limit (DFA)",
+      "desc": "\u03ba_QG \u2248 0.2553, V_\u03b1 = 0.8169",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "Phase Propagation Topology (PPT)",
+      "name": "Phase Propagation Topology (PPT)",
+      "desc": "||v||_L\u221e \u2264 c, w_1(S(\u03c6)) \u2260 0",
+      "color": "#6450ff",
+      "val": 20
+    },
+    {
+      "id": "2026-03-31_c6_p0",
+      "name": "Result: The Scalar Ground State [Iter 1]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p1",
+      "name": "Result: The Arc Vector [Iter 2]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p2",
+      "name": "Result: Fundamental Wave Equation [Iter 3]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p3",
+      "name": "Result: Harmonic Scaling (Fibonacci Metric) [Iter 4]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p4",
+      "name": "Result: The Observer Transformation [Iter 5]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p5",
+      "name": "Result: Geodesic Curvature [Iter 6]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p6",
+      "name": "Result: The M\u00f6bius Identity [Iter 7]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p7",
+      "name": "Result: Fibridge Compression Limit (DFA) [Iter 8]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p8",
+      "name": "Result: Phase Propagation Topology (PPT) [Iter 9]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p9",
+      "name": "Result: The Scalar Ground State [Iter 10]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p10",
+      "name": "Result: The Arc Vector [Iter 11]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p11",
+      "name": "Result: Fundamental Wave Equation [Iter 12]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p12",
+      "name": "Result: Harmonic Scaling (Fibonacci Metric) [Iter 13]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p13",
+      "name": "Result: The Observer Transformation [Iter 14]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    },
+    {
+      "id": "2026-03-31_c6_p14",
+      "name": "Result: Geodesic Curvature [Iter 15]",
+      "desc": "\u03ba=6.8541",
+      "color": "#33ff33",
+      "val": 15
+    }
+  ],
+  "links": [
+    {
+      "source": "The Scalar Ground State",
+      "target": "MasterEq"
+    },
+    {
+      "source": "The Arc Vector",
+      "target": "MasterEq"
+    },
+    {
+      "source": "Fundamental Wave Equation",
+      "target": "MasterEq"
+    },
+    {
+      "source": "Harmonic Scaling (Fibonacci Metric)",
+      "target": "MasterEq"
+    },
+    {
+      "source": "The Observer Transformation",
+      "target": "MasterEq"
+    },
+    {
+      "source": "Geodesic Curvature",
+      "target": "MasterEq"
+    },
+    {
+      "source": "The M\u00f6bius Identity",
+      "target": "MasterEq"
+    },
+    {
+      "source": "Fibridge Compression Limit (DFA)",
+      "target": "MasterEq"
+    },
+    {
+      "source": "Phase Propagation Topology (PPT)",
+      "target": "MasterEq"
+    },
+    {
+      "source": "2026-03-31_c6_p0",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p1",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p2",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p3",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p4",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p5",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p6",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p7",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p8",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p9",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p10",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p11",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p12",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p13",
+      "target": "The Scalar Ground State"
+    },
+    {
+      "source": "2026-03-31_c6_p14",
+      "target": "The Scalar Ground State"
+    }
+  ]
+}
