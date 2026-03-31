@@ -370,28 +370,46 @@ def _build_website(posts: list, theory: dict):
     ]
     graph_links = []
     
-    # Core Theory nodes (Mega Nodes: 12 Levels)
+    # 1. Linear Theory Spine (Backbone)
     for lvl in theory.get("twelve_levels", []):
+        l_id = f"L{lvl['level']}"
         graph_nodes.append({
-            "id": f"L{lvl['level']}", 
-            "name": lvl["name"], 
-            "desc": lvl["desc"], 
-            "color": "#ffcc00", 
-            "val": 30 # Mega Nodes are larger
+            "id": l_id, "name": lvl["name"], "desc": lvl["desc"], "color": "#ffcc00", "val": 30
         })
         if lvl["level"] > 0:
-            # Link to the previous level OR the master equation
-            graph_links.append({"source": f"L{lvl['level']}", "target": f"L{lvl['level']-1}"})
+            graph_links.append({"source": l_id, "target": f"L{lvl['level']-1}"})
         else:
-            graph_links.append({"source": "L0", "target": "MasterEq"})
+            graph_links.append({"source": l_id, "target": "MasterEq"})
 
-    # Core Theory nodes (Equations)
+    # 2. Logic Mappings (Theory Spine Anchors)
+    level_anchors = {
+        "The Scalar Ground State": "L0",
+        "The Arc Vector": "L1",
+        "Phase Propagation Topology (PPT)": "L1",
+        "Fibridge Compression Limit (DFA)": "L1",
+        "The Observer Transformation": "L3",
+        "Harmonic Scaling (Fibonacci Metric)": "L5",
+        "Geodesic Curvature": "L7",
+        "The Möbius Identity": "L7",
+        "Fundamental Wave Equation": "L8",
+        "phi": "L0",
+        "L_dkb": "L0",
+        "phi_5": "L1",
+        "kappa_qg": "L1",
+        "v_alpha": "L1",
+        "H_dkb": "L7",
+        "alpha_dkb": "L8",
+        "theta_max": "L8"
+    }
+
+    # 3. Core Pillar Laws (Equations)
     for eq in theory["core_equations"]:
-        nature_title = f"Fundamental Phase Case 0{eq['id']}" if eq['id'] < 10 else f"Fundamental Phase Case {eq['id']}"
+        nature_title = f"Fundamental Pillar 0{eq['id']}" if eq['id'] < 10 else f"Fundamental Pillar {eq['id']}"
         graph_nodes.append({"id": eq["name"], "name": nature_title, "desc": eq["eq"], "color": "#6450ff", "val": 22})
-        graph_links.append({"source": eq["name"], "target": "MasterEq"})
+        target = level_anchors.get(eq["name"], "MasterEq")
+        graph_links.append({"source": eq["name"], "target": target})
     
-    # Meta Emerged Nodes (Milestones + Research)
+    # 4. Meta Emerged Nodes (Milestones + Research)
     for m in theory.get("milestones", []):
         m_id = f"M_{m['date']}"
         graph_nodes.append({"id": m_id, "name": f"Milestone: {m['event']}", "desc": f"Emergence Date: {m['date']}", "color": "#ff33cc", "val": 25})
@@ -399,36 +417,37 @@ def _build_website(posts: list, theory: dict):
 
     for r in theory.get("active_research", []):
         r_id = f"R_{r[:10]}"
-        graph_nodes.append({"id": r_id, "name": f"Research: {r}", "desc": "Active Theoretical Pursuit", "color": "#00ccff", "val": 20})
-        graph_links.append({"source": r_id, "target": "MasterEq"})
+        graph_nodes.append({
+            "id": r_id, "name": f"Research: {r}", "desc": "Active Theoretical Pursuit", "color": "#00ccff", "val": 20
+        })
+        # Research typically targets specific levels or MasterEq
+        target = "L3" if "consciousness" in r.lower() else "MasterEq"
+        graph_links.append({"source": r_id, "target": target})
 
-    # Latest Breakthroughs as orbiting nodes (connecting to their cycle level)
+    # 5. Physical Constants & Invariants (Golden Nodes - Anchored)
+    for c in theory.get("physical_constants", []):
+        c_id = f"C_{c['id']}"
+        graph_nodes.append({
+            "id": c_id, "name": c["name"], "desc": f"Value: {c['val']} | {c['desc']}", "color": "#ffee00", "val": 18
+        })
+        target = level_anchors.get(c["id"], "MasterEq")
+        graph_links.append({"source": c_id, "target": target})
+
+    # 6. Latest Breakthroughs (Orbiting Pillar Laws they evaluate)
     breakthroughs = [p for p in posts if p.get("theme") == "Breakthrough"][:30]
     for b in breakthroughs:
         b_id = b.get("id", "b")
-        cycle = b.get("cycle", 0)
         q = b.get("quantum", {}).get("cirq", {})
         impact_desc = f"Quantum Validation Efficiency: {q.get('improvement_pct', 895)}% (φ-node resonant)"
         graph_nodes.append({"id": b_id, "name": b.get("title"), "desc": impact_desc, "color": "#33ff33", "val": 15})
         
-        # Link to the cycle's level
-        target_lvl = f"L{cycle}"
-        graph_links.append({"source": b_id, "target": target_lvl})
-        # Hub link to core
-        graph_links.append({"source": b_id, "target": "MasterEq"})
-
-    # Physical Constants & Invariants (Golden Nodes)
-    for c in theory.get("physical_constants", []):
-        c_id = f"C_{c['id']}"
-        graph_nodes.append({
-            "id": c_id, 
-            "name": c["name"], 
-            "desc": f"Value: {c['val']} | {c['desc']}", 
-            "color": "#ffee00", 
-            "val": 18
-        })
-        # Link to the specified theory node
-        graph_links.append({"source": c_id, "target": c["link"]})
+        # Determine target pillar from title content (Logically identifying evaluated concept)
+        target_pillar = theory["core_equations"][0]["name"] # Default
+        for eq in theory["core_equations"]:
+            if eq["name"].lower() in b.get("title", "").lower():
+                target_pillar = eq["name"]
+                break
+        graph_links.append({"source": b_id, "target": target_pillar})
 
     graph_json = json.dumps({"nodes": graph_nodes, "links": graph_links}, indent=2)
     with open(website_dir / "graph_data.json", "w") as f:
