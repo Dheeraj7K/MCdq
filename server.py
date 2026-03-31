@@ -294,19 +294,31 @@ def _build_website(posts: list, theory: dict):
         title = p.get("title", "")
         body  = p.get("body", "")
         theme = p.get("theme", "")
-        cirq_imp = p.get("quantum", {}).get("cirq", {}).get("improvement_pct", 895)
+        q = p.get("quantum", {})
+        cirq_imp = q.get("cirq", {}).get("improvement_pct", 895)
+        tg_red = q.get("qualtran", {}).get("reduction_pct", 88.83)
         
         # Safely escape JSON for HTML attribute
-        # We replace " with &quot; for HTML and ' with \' for JS context inside onclick='...'
         p_json = json.dumps(p).replace('"', '&quot;').replace("'", "\\'")
         
-        return f'''<div class="post-card" onclick="openPostById('{p_json}')">
-          <div class="post-img-wrap"><img src="{img}" alt="{title}" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="post-meta"><span class="theme-badge">{theme}</span><span class="cirq-badge">⟁ +{cirq_imp}%</span></div>
-          <div class="post-title">{title}</div>
-          <div class="post-body">{body}</div>
-          <div class="card-footer">
-            <div class="info-btn" title="Read Full Analysis">i</div>
+        return f'''
+        <div class="post-card" onclick="openPostById('{p_json}')">
+          <div class="post-img-wrap">
+            <img src="{img}" alt="{title}" loading="lazy" onerror="this.style.display='none'">
+            <div class="post-overlay-data">
+              <div class="cirq-pill">⟁ +{cirq_imp}%</div>
+              <div class="qual-pill">◈ -{tg_red}%</div>
+            </div>
+          </div>
+          <div class="post-card-content">
+            <div class="post-meta">
+              <span class="theme-badge">{theme}</span>
+            </div>
+            <div class="post-title">{title}</div>
+            <div class="post-body">{body}</div>
+            <div class="card-footer">
+               <div class="btn-primary">View Analysis</div>
+            </div>
           </div>
         </div>'''
 
@@ -359,326 +371,180 @@ def _build_website(posts: list, theory: dict):
 <title>DKB Connected Thoughts — Phase Framework Live Feed</title>
 <meta name="description" content="Live thought feed from the DKB Phase Framework — Reality = O(∇θ). Quantum-validated posts updated 7× daily. By Dheeraj Kumar Bakoriya.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {{
-    --bg:      #050510;
-    --bg2:     #0a0a20;
-    --card:    rgba(255,255,255,0.04);
-    --border:  rgba(100,80,255,0.2);
-    --accent:  #6450ff;
-    --accent2: #00c8b0;
-    --text:    #e0deff;
-    --muted:   rgba(224,222,255,0.5);
-    --glow:    rgba(100,80,255,0.15);
+    --bg: #050510;
+    --bg-alt: #0a0a1f;
+    --bg-glass: rgba(10, 10, 31, 0.7);
+    --accent: #6450ff;
+    --accent-glow: rgba(100, 80, 255, 0.3);
+    --accent2: #00ccff;
+    --border: rgba(100, 80, 255, 0.2);
+    --text: #ffffff;
+    --muted: #8892b0;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }}
-  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html {{ scroll-behavior: smooth; }}
   body {{
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+    background: var(--bg); color: var(--text);
+    font-family: var(--font-body); line-height: 1.6;
     overflow-x: hidden;
   }}
-
-  /* ── ANIMATED BG ── */
+  
+  /* ── BG ANIMATION ── */
   body::before {{
-    content: '';
-    position: fixed; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(100,80,255,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 80% 70%, rgba(0,200,180,0.06) 0%, transparent 60%);
-    pointer-events: none; z-index: 0;
-    animation: bgShift 20s ease-in-out infinite alternate;
-  }}
-  @keyframes bgShift {{
-    from {{ opacity: 1; }} to {{ opacity: 0.6; }}
+    content: ''; position: fixed; inset: 0; pointer-events: none;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(100, 80, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(0, 204, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
   }}
 
-  /* ── NAV ── */
+  /* ── NAVIGATION ── */
   nav {{
-    position: sticky; top: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px;
-    height: 64px;
-    background: rgba(5,5,16,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 16px 40px; background: var(--bg-glass);
+    backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
   }}
-  .nav-brand {{
-    font-weight: 900; font-size: 1.1rem; letter-spacing: 0.05em;
-    color: var(--text);
-  }}
+  .nav-brand {{ font-family: var(--font-heading); font-weight: 900; font-size: 1.4rem; letter-spacing: -0.02em; }}
   .nav-brand span {{ color: var(--accent); }}
-  .nav-eq {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem; color: var(--accent2);
-    opacity: 0.8;
-  }}
-  .nav-links {{ display: flex; gap: 28px; }}
-  .nav-links a {{
-    color: var(--muted); text-decoration: none; font-size: 0.9rem;
-    transition: color 0.2s;
-  }}
-  .nav-links a:hover {{ color: var(--text); }}
+  .nav-eq {{ font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); opacity: 0.8; }}
+  .nav-links {{ display: flex; gap: 32px; }}
+  .nav-links a {{ text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 600; transition: 0.2s; }}
+  .nav-links a:hover, .nav-links a.active {{ color: var(--text); }}
 
   /* ── HERO ── */
-  .hero {{
-    position: relative; z-index: 1;
-    padding: 100px 40px 80px;
-    text-align: center;
-  }}
+  .hero {{ padding: 160px 40px 80px; text-align: center; position: relative; }}
   .hero-badge {{
-    display: inline-block;
-    padding: 6px 18px; border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--glow);
-    font-size: 0.8rem; color: var(--accent2);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 28px;
+    display: inline-block; padding: 6px 16px; background: rgba(100, 80, 255, 0.15);
+    border: 1px solid var(--accent); border-radius: 100px; color: var(--accent2);
+    font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 32px; animation: fadeInDown 0.8s ease;
   }}
   .hero h1 {{
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 900; line-height: 1.1;
-    background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, var(--accent2) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 24px;
+    font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 32px;
+    background: linear-gradient(to bottom, #fff, #8892b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-family: var(--font-heading); font-weight: 900;
   }}
-  .hero-master-eq {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(1rem, 2.5vw, 1.6rem);
-    color: var(--accent2);
-    margin-bottom: 20px;
-    opacity: 0.9;
-  }}
-  .hero p {{
-    max-width: 600px; margin: 0 auto 48px;
-    color: var(--muted); font-size: 1.05rem; line-height: 1.7;
-  }}
-  .hero-stats {{
-    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-  }}
-  .stat-item {{ text-align: center; }}
-  .stat-num {{
-    font-size: 2.5rem; font-weight: 900;
-    color: var(--accent); font-family: 'JetBrains Mono', monospace;
-  }}
-  .stat-label {{ font-size: 0.8rem; color: var(--muted); margin-top: 4px; }}
+  .hero-master-eq {{ font-family: var(--font-mono); font-size: 1.8rem; color: var(--accent); margin-bottom: 40px; opacity: 0.9; }}
+  .hero p {{ max-width: 650px; margin: 0 auto 56px; color: var(--muted); font-size: 1.15rem; }}
+  
+  .hero-stats {{ display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }}
+  .stat-item {{ text-align: left; }}
+  .stat-num {{ font-family: var(--font-heading); font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 8px; }}
+  .stat-label {{ font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 700; }}
 
   /* ── QUANTUM TICKER ── */
   .quantum-ticker {{
-    position: relative; z-index: 1;
-    background: linear-gradient(135deg, rgba(100,80,255,0.1), rgba(0,200,180,0.1));
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 40px;
-    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+    background: rgba(255,255,255,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 14px 40px; display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
   }}
-  .ticker-item {{
-    display: flex; align-items: center; gap: 10px;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-  }}
+  .ticker-item {{ font-family: var(--font-mono); font-size: 0.8rem; display: flex; gap: 8px; }}
   .ticker-label {{ color: var(--muted); }}
   .ticker-value {{ color: var(--accent2); font-weight: 700; }}
 
-  /* ── SIMULATOR ── */
-  .simulator-section {{
-    max-width: 1400px; margin: 60px auto 20px; padding: 0 24px;
-  }}
+  /* ── SIMULATOR SECTION ── */
+  .simulator-section {{ padding: 60px 40px; max-width: 1440px; margin: 0 auto; }}
   .simulator-frame {{
-    width: 100%; height: 800px;
-    border: 1px solid var(--border); border-radius: 16px;
-    background: var(--bg2); box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    width: 100%; height: 600px; border: 1px solid var(--border); border-radius: 32px;
+    background: #000; box-shadow: 0 40px 100px rgba(0,0,0,0.8);
   }}
 
   /* ── LAYOUT ── */
-  .layout {{
-    position: relative; z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 0;
-    max-width: 1400px; margin: 0 auto; padding: 0 24px;
-  }}
-  @media (max-width: 1024px) {{ .layout {{ grid-template-columns: 1fr; }} }}
+  .layout {{ max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 0; }}
+  @media (max-width: 1100px) {{ .layout {{ grid-template-columns: 1fr; }} }}
 
-  /* ── POSTS GRID ── */
-  .posts-section {{ padding: 40px 32px 40px 0; }}
-  .section-title {{
-    font-size: 1.1rem; font-weight: 700; color: var(--text);
-    margin-bottom: 24px; padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 12px;
-  }}
-  .section-badge {{
-    font-size: 0.75rem; color: var(--accent); padding: 3px 10px;
-    border: 1px solid var(--border); border-radius: 999px;
-  }}
-  .posts-grid {{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }}
+  /* ── FEED ── */
+  .posts-section {{ padding: 60px 40px 100px 40px; border-right: 1px solid var(--border); }}
+  .section-title {{ font-size: 2rem; margin-bottom: 48px; display: flex; align-items: baseline; gap: 16px; font-family: var(--font-heading); font-weight: 900; }}
+  .section-badge {{ font-size: 0.9rem; color: var(--muted); font-weight: 400; }}
+  
+  .posts-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 32px; }}
+  
   .post-card {{
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 24px;
+    overflow: hidden; cursor: pointer; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
   }}
-  .post-card:hover {{
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(100,80,255,0.2);
-    border-color: var(--accent);
+  .post-card:hover {{ transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }}
+  
+  .post-img-wrap {{ position: relative; aspect-ratio: 16/9; overflow: hidden; }}
+  .post-img-wrap img {{ width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }}
+  .post-card:hover .post-img-wrap img {{ transform: scale(1.1); }}
+  
+  .post-overlay-data {{
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    display: flex; justify-content: space-between;
   }}
-  .post-img-wrap {{ aspect-ratio: 1; overflow: hidden; background: var(--bg2); }}
-  .post-img-wrap img {{
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.4s ease;
+  .cirq-pill, .qual-pill {{
+    background: rgba(5,5,16,0.8); backdrop-filter: blur(8px); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
   }}
-  .post-card:hover .post-img-wrap img {{ transform: scale(1.04); }}
-  .post-meta {{
-    display: flex; gap: 8px; align-items: center;
-    padding: 12px 16px 0;
+  .cirq-pill {{ color: var(--accent); }}
+  .qual-pill {{ color: var(--accent2); }}
+
+  .post-card-content {{ padding: 28px; }}
+  .theme-badge {{ font-size: 0.65rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }}
+  .post-title {{ font-size: 1.5rem; line-height: 1.2; margin: 12px 0 16px; font-weight: 900; font-family: var(--font-heading); }}
+  .post-body {{ color: var(--muted); font-size: 1rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }}
+  
+  .card-footer {{ margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }}
+  .btn-primary {{
+    display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--accent2);
+    transition: 0.2s; text-decoration: none;
   }}
-  .theme-badge {{
-    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
-    padding: 3px 10px; border-radius: 999px;
-    background: var(--glow); border: 1px solid var(--border);
-    color: var(--accent);
-  }}
-  .cirq-badge {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem; color: var(--accent2);
-  }}
-  .post-title {{
-    font-weight: 700; font-size: 0.95rem; line-height: 1.3;
-    padding: 10px 16px 6px; color: var(--text);
-  }}
-  .post-body {{
-    font-size: 0.82rem; color: var(--muted); line-height: 1.5;
-    padding: 0 16px 8px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }}
-  .card-footer {{
-    padding: 0 16px 16px;
-    display: flex;
-    justify-content: flex-end;
-  }}
-  .info-btn {{
-    background: var(--glow);
-    border: 1px solid var(--border);
-    color: var(--accent);
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(100,80,255,0.1);
-  }}
-  .info-btn:hover {{
-    background: var(--accent);
-    color: var(--text);
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px rgba(100,80,255,0.3);
-  }}
+  .post-card:hover .btn-primary {{ color: #fff; transform: translateX(5px); }}
 
   /* ── SIDEBAR ── */
-  .sidebar {{
-    padding: 40px 0 40px 32px;
-    border-left: 1px solid var(--border);
-  }}
-  .sidebar-section {{ margin-bottom: 40px; }}
-  .sidebar-title {{
-    font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--accent);
-    margin-bottom: 16px;
-  }}
-
-  /* ── EQUATIONS ── */
-  .eq-item {{
-    display: flex; flex-direction: column; gap: 4px;
-    padding: 12px 0; border-bottom: 1px solid rgba(100,80,255,0.1);
-  }}
-  .eq-num {{ font-size: 0.7rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; }}
-  .eq-name {{ font-size: 0.9rem; font-weight: 600; color: var(--text); }}
-  .eq-code {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem; color: var(--accent);
-    background: rgba(100,80,255,0.08);
-    padding: 4px 8px; border-radius: 4px; margin: 2px 0;
-  }}
-  .eq-domain {{ font-size: 0.7rem; color: var(--muted); }}
-
-  /* ── RESEARCH ── */
-  .research-item {{
-    padding: 8px 0; border-bottom: 1px solid rgba(100,80,255,0.08);
-    font-size: 0.85rem; color: var(--muted); list-style: none;
-  }}
-  .research-item::before {{ content: '▸ '; color: var(--accent); }}
+  .sidebar {{ padding: 60px 40px; }}
+  .sidebar-section {{ margin-bottom: 60px; }}
+  .sidebar-title {{ font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 800; color: var(--accent); margin-bottom: 32px; }}
+  
+  .eq-item {{ margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 16px; }}
+  .eq-code {{ display: block; font-family: var(--font-mono); font-size: 1rem; color: var(--accent2); margin: 8px 0; word-break: break-all; }}
+  .eq-domain {{ font-size: 0.75rem; color: var(--muted); font-style: italic; }}
+  .research-item {{ padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }}
 
   /* ── MODAL ── */
   .modal-overlay {{
-    display: none; position: fixed; inset: 0; z-index: 1000;
-    background: rgba(5,5,16,0.92); backdrop-filter: blur(20px);
-    align-items: center; justify-content: center; padding: 24px;
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(5,5,16,0.9); backdrop-filter: blur(20px);
+    align-items: center; justify-content: center; padding: 40px;
   }}
   .modal-overlay.active {{ display: flex; }}
   .modal {{
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 24px; max-width: 680px; width: 100%;
-    max-height: 90vh; overflow-y: auto;
-    animation: modalIn 0.3s ease;
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 32px;
+    max-width: 1000px; width: 100%; max-height: 90vh; overflow: hidden;
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    animation: modalIn 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }}
-  @keyframes modalIn {{
-    from {{ opacity: 0; transform: scale(0.95) translateY(20px); }}
-    to   {{ opacity: 1; transform: scale(1) translateY(0); }}
-  }}
-  .modal-header {{
-    padding: 28px 28px 0;
-    display: flex; justify-content: space-between; align-items: start;
-  }}
-  .modal-theme {{ font-size: 0.75rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; }}
-  .modal-close {{
-    background: none; border: 1px solid var(--border);
-    color: var(--muted); cursor: pointer; border-radius: 8px;
-    width: 32px; height: 32px; font-size: 1.1rem;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }}
-  .modal-close:hover {{ color: var(--text); border-color: var(--accent); }}
-  .modal-title {{ font-size: 1.6rem; font-weight: 900; padding: 16px 28px 0; line-height: 1.2; }}
-  .modal-body {{ font-size: 1rem; line-height: 1.7; color: var(--muted); padding: 20px 28px; }}
-  .modal-quantum {{
-    margin: 0 28px; padding: 16px; border-radius: 12px;
-    background: rgba(100,80,255,0.06); border: 1px solid var(--border);
-    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent2);
-  }}
-  .modal-hashtags {{ padding: 16px 28px 28px; color: var(--muted); font-size: 0.85rem; }}
-  .modal-img {{ width: 100%; display: block; border-radius: 12px; margin: 20px 28px 0; width: calc(100% - 56px); }}
-
+  @media (max-width: 800px) {{ .modal {{ grid-template-columns: 1fr; }} .modal-media {{ display: none; }} }}
+  @keyframes modalIn {{ from {{ opacity: 0; transform: translateY(40px) scale(0.98); }} to {{ opacity: 1; transform: translateY(0) scale(1); }} }}
+  
+  .modal-media {{ background: #000; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }}
+  .modal-media img {{ width: 100%; height: 100%; object-fit: cover; }}
+  
+  .modal-content {{ padding: 56px; overflow-y: auto; display: flex; flex-direction: column; }}
+  .modal-header {{ display: flex; justify-content: space-between; align-items: start; margin-bottom: 32px; }}
+  .modal-close {{ background: none; border: 1px solid var(--border); color: var(--muted); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: 0.2s; }}
+  .modal-close:hover {{ color: #fff; border-color: #fff; }}
+  .modal-title {{ font-size: 2.5rem; line-height: 1.1; font-weight: 900; margin-bottom: 28px; font-family: var(--font-heading); }}
+  .modal-body {{ font-size: 1.2rem; line-height: 1.7; color: var(--muted); margin-bottom: 40px; }}
+  
+  .quantum-block {{ background: rgba(100, 80, 255, 0.1); border: 1px solid var(--border); border-radius: 16px; padding: 24px; font-family: var(--font-mono); font-size: 0.85rem; }}
+  
   /* ── FOOTER ── */
-  footer {{
-    position: relative; z-index: 1;
-    text-align: center; padding: 48px 40px;
-    border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 0.85rem;
-  }}
-  footer .footer-eq {{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem; color: var(--accent); margin-bottom: 12px;
-  }}
+  footer {{ padding: 80px 40px; border-top: 1px solid var(--border); text-align: center; color: var(--muted); }}
+  .footer-eq {{ font-family: var(--font-mono); font-size: 1.4rem; color: var(--accent); margin-bottom: 16px; }}
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInDown {{ from {{ opacity: 0; transform: translateY(-20px); }} to {{ opacity: 1; transform: translateY(0); }} }}
 </style>
 </head>
 <body>
@@ -687,26 +553,25 @@ def _build_website(posts: list, theory: dict):
   <div class="nav-brand">DKB <span>◈</span> Connected Thoughts</div>
   <div class="nav-eq">Reality = O(∇θ)</div>
   <div class="nav-links">
-    <a href="#posts">Feed</a>
-    <a href="visualization.html">Map 3D</a>
+    <a href="#posts" class="active">Feed</a>
+    <a href="visualization.html">System Map 3D</a>
     <a href="#theory">Theory</a>
     <a href="#equations">Equations</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-badge">⟁ DKB Phase Framework · Live Feed</div>
-  <h1>Connected Thoughts<br>on Reality</h1>
+  <div class="hero-badge">◈ DKB Phase Framework · Live Feed ◈</div>
+  <h1>Connected Thoughts<br>on Consciousness</h1>
   <div class="hero-master-eq">Reality = O(∇θ)</div>
   <p>
-    Every day, 7 cycles × 20 thoughts — exploring the DKB Phase Framework
-    through quantum-validated reflections. Powered by Google Cirq + Qualtran.
-    By <strong>Dheeraj Kumar Bakoriya</strong>.
+    Exploring the DKB Phase Framework through autonomous quantum-validated reflections. 
+    Powered by <strong>Google Cirq + Qualtran</strong> logic.
   </p>
   <div class="hero-stats">
     <div class="stat-item">
       <div class="stat-num">{len(posts)}</div>
-      <div class="stat-label">Total Posts</div>
+      <div class="stat-label">Total Insights</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">+895%</div>
@@ -714,47 +579,27 @@ def _build_website(posts: list, theory: dict):
     </div>
     <div class="stat-item">
       <div class="stat-num">-88.8%</div>
-      <div class="stat-label">T-Gate Reduction</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">140</div>
-      <div class="stat-label">Posts Per Day</div>
+      <div class="stat-label">Resource Gain</div>
     </div>
   </div>
 </section>
 
 <div class="quantum-ticker">
-  <div class="ticker-item">
-    <span class="ticker-label">⟁ Cirq coherence:</span>
-    <span class="ticker-value">+895%</span>
-  </div>
-  <div class="ticker-item">
-    <span class="ticker-label">⊗ φ-node:</span>
-    <span class="ticker-value">φ^5 = 11.09</span>
-  </div>
-  <div class="ticker-item">
-    <span class="ticker-label">◈ T-gate reduction:</span>
-    <span class="ticker-value">-88.83%</span>
-  </div>
-  <div class="ticker-item">
-    <span class="ticker-label">🔬 Tools:</span>
-    <span class="ticker-value">Google Cirq · Qualtran</span>
-  </div>
-  <div class="ticker-item">
-    <span class="ticker-label">📋 Today:</span>
-    <span class="ticker-value">{len(today_posts)} / 140 posts</span>
-  </div>
+  <div class="ticker-item"><span class="ticker-label">⟁ Baseline:</span> <span class="ticker-value">201.0μs</span></div>
+  <div class="ticker-item"><span class="ticker-label">◈ DKB Lead:</span> <span class="ticker-value">2000.0μs</span></div>
+  <div class="ticker-item"><span class="ticker-label">🔬 Engine:</span> <span class="ticker-value">Qualtran v2026.1</span></div>
+  <div class="ticker-item"><span class="ticker-label">📋 Today:</span> <span class="ticker-value">{len(today_posts)} / 140 thoughts</span></div>
 </div>
 
 <div class="simulator-section">
-  <div class="section-title" style="margin-bottom:16px;">Phase Framework Simulator <span class="section-badge">Live Interactive Model</span></div>
+  <div class="section-title" style="margin-bottom:24px;">Phase Framework Simulator <span class="section-badge">Live Interactive Model</span></div>
   <iframe class="simulator-frame" src="https://dkb-phase-framework-simulator-146274734723.us-west1.run.app/" allow="compute; webgl; fullscreen"></iframe>
 </div>
 
 <div class="layout">
   <main class="posts-section" id="posts">
     <div class="section-title">
-      Latest Thoughts
+      Latest Breakthroughs
       <span class="section-badge">{len(posts)} total</span>
     </div>
     <div class="posts-grid" id="postsGrid">
@@ -764,75 +609,82 @@ def _build_website(posts: list, theory: dict):
 
   <aside class="sidebar" id="theory">
     <div class="sidebar-section">
-      <div class="sidebar-title">Theory Status</div>
+      <div class="sidebar-title">Architecture Status</div>
       <div class="eq-item">
-        <span class="eq-num">Master Equation</span>
+        <span class="eq-num">Master Framework</span>
         <code class="eq-code">Reality = O(∇θ)</code>
-        <span class="eq-domain">All of physics, consciousness, and time</span>
+        <span class="eq-domain">Unified Phase Spacetime</span>
       </div>
       <div class="eq-item">
         <span class="eq-num">Author</span>
         <span class="eq-name">Dheeraj Kumar Bakoriya</span>
-        <span class="eq-domain">DKB Phase Framework, 2026</span>
+        <span class="eq-domain">Principal Investigator</span>
       </div>
     </div>
 
     <div class="sidebar-section" id="equations">
-      <div class="sidebar-title">7 Arc Equations</div>
+      <div class="sidebar-title">Core Mathematical Proofs</div>
       {equations_html}
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-title">Active Research</div>
-      <ul style="list-style:none">
+      <div class="sidebar-title">Active Field Research</div>
+      <ul style="list-style:none; padding: 0;">
         {research_html}
       </ul>
     </div>
   </aside>
 </div>
 
-<!-- Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closePost(event)">
   <div class="modal" id="modal">
-    <div class="modal-header">
-      <span class="modal-theme" id="modalTheme"></span>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-media" id="modalMedia">
+      <img id="modalImg" src="" alt="">
     </div>
-    <div class="modal-title" id="modalTitle"></div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-quantum" id="modalQuantum"></div>
-    <img class="modal-img" id="modalImg" src="" alt="" onerror="this.style.display='none'">
-    <div class="modal-hashtags" id="modalHashtags"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-theme" id="modalTheme"></span>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="quantum-block">
+        <div style="color: var(--accent); margin-bottom: 8px; font-weight: 900;">QUANTUM VALIDATION [ Cirq + Qualtran ]</div>
+        <div id="modalQuantum"></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <footer>
   <div class="footer-eq">Reality = O(∇θ)</div>
-  <div>DKB Connected Thoughts · Auto-generated {datetime.now().strftime("%B %d, %Y")} · Powered by Google Cirq + Qualtran</div>
+  <div>DKB Connected Thoughts · Automated {datetime.now().strftime("%Y")} · Dheeraj Kumar Bakoriya</div>
 </footer>
 
 <script>
 function openPostById(postJson) {{
   const post = JSON.parse(postJson.replace(/&quot;/g, '"'));
-  openPost(post);
-}}
-function openPost(post) {{
-  document.getElementById('modalTheme').textContent = post.theme + ' · Cycle ' + (post.cycle+1) + '/7';
+  console.log("Opening post:", post);
+  
+  document.getElementById('modalTheme').textContent = post.theme;
   document.getElementById('modalTitle').textContent = post.title;
   document.getElementById('modalBody').textContent = post.body;
+  
   const c = post.quantum?.cirq || {{}};
   const q = post.quantum?.qualtran || {{}};
-  document.getElementById('modalQuantum').innerHTML =
-    '⟁ Cirq: φ^' + (c.phi_harmonic||5) + ' = ' + (c.phi_node||11.09) +
-    ' | Improvement: +' + (c.improvement_pct||895) + '%<br>' +
-    '◈ Qualtran: ' + (q.dkb_tgates||22344) + ' T-gates | Reduction: -' + (q.reduction_pct||88.83) + '%';
+  document.getElementById('modalQuantum').innerHTML = 
+    '• Coherence: +' + (c.improvement_pct||895) + '% (φ^5 node)<br>' +
+    '• T-Gate Resource Cost: ' + (q.dkb_tgates||22344) + ' (Red: -' + (q.reduction_pct||88.83) + '%)';
+    
   const img = document.getElementById('modalImg');
+  const media = document.getElementById('modalMedia');
   img.src = post.image_path || '';
-  img.style.display = post.image_path ? 'block' : 'none';
-  document.getElementById('modalHashtags').textContent = post.hashtags || '';
+  media.style.display = post.image_path ? 'flex' : 'none';
+  
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }}
+
 function closePost(e) {{ if (e.target === document.getElementById('modalOverlay')) closeModal(); }}
 function closeModal() {{
   document.getElementById('modalOverlay').classList.remove('active');
