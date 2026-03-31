@@ -1,6 +1,8 @@
 name: ⟁ DKB Phase Framework Automated Engine
 
 on:
+  push:
+    branches: [ main ]
   schedule:
     # Runs the generator every 12 hours automatically
     - cron: '0 0,12 * * *'
