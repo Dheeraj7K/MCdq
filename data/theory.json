@@ -133,6 +133,16 @@
     "daily_update"
   ],
 
+  "physical_constants": [
+    {"id": "phi", "name": "Golden Ratio (φ)", "val": "1.61803", "desc": "The universal phase stability constant. Prevents phase-lock collapse.", "link": "MasterEq"},
+    {"id": "phi_5", "name": "Fibridge Constant (φ⁵)", "val": "11.09017", "desc": "Principal harmonic resonance node for quantum coherence scaling.", "link": "Fibridge Compression Limit (DFA)"},
+    {"id": "kappa_qg", "name": "Quantum Gravity Invariant (κ_QG)", "val": "0.2553", "desc": "The discrete dynamical holographic bound for phase-field density.", "link": "Fibridge Compression Limit (DFA)"},
+    {"id": "v_alpha", "name": "Alpha Velocity (V_α)", "val": "0.8169", "desc": "Maximum group velocity of a phase arc before singular breakdown.", "link": "Phase Propagation Topology (PPT)"},
+    {"id": "alpha_dkb", "name": "Fine Structure Constant (α)", "val": "1/137.036", "desc": "Derived from Level 8 φ-harmonic geometry as the field's fingerprint.", "link": "EM Spectrum"},
+    {"id": "theta_max", "name": "Phase Saturation (θ_max)", "val": "π/2 (1.5707)", "desc": "The topological boundary where phase gradients undergo state inversion.", "link": "MasterEq"},
+    {"id": "L_dkb", "name": "Fundamental DKB Length", "val": "L = φ⁻¹³ c/f_p", "desc": "The unit of length where phase arcs achieve absolute synchronization.", "link": "The Scalar Ground State"},
+    {"id": "H_dkb", "name": "Phase Height (Shape)", "val": "H = ∇θ · O", "desc": "The effective vertical dimension of a phase-gradient in 3D space.", "link": "3D Space"}
+  ],
   "hashtags": [
     "#DKBTheory", "#PhaseField", "#QuantumCoherence", "#UnifiedField",
     "#ArcVector", "#MöbiusTopology", "#FibonacciPhysics", "#GoldenRatio",

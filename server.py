@@ -417,6 +417,19 @@ def _build_website(posts: list, theory: dict):
         # Hub link to core
         graph_links.append({"source": b_id, "target": "MasterEq"})
 
+    # Physical Constants & Invariants (Golden Nodes)
+    for c in theory.get("physical_constants", []):
+        c_id = f"C_{c['id']}"
+        graph_nodes.append({
+            "id": c_id, 
+            "name": c["name"], 
+            "desc": f"Value: {c['val']} | {c['desc']}", 
+            "color": "#ffee00", 
+            "val": 18
+        })
+        # Link to the specified theory node
+        graph_links.append({"source": c_id, "target": c["link"]})
+
     graph_json = json.dumps({"nodes": graph_nodes, "links": graph_links}, indent=2)
     with open(website_dir / "graph_data.json", "w") as f:
         f.write(graph_json)
@@ -804,6 +817,7 @@ document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(
         <div class="legend-item"><div class="dot" style="background:#ff33cc"></div> Master Equation</div>
         <div class="legend-item"><div class="dot" style="background:#ffcc00"></div> Mega Nodes (12 Levels)</div>
         <div class="legend-item"><div class="dot" style="background:#6450ff"></div> Core Pillar Laws</div>
+        <div class="legend-item"><div class="dot" style="background:#ffee00"></div> Physical Constants & Invariants</div>
         <div class="legend-item"><div class="dot" style="background:#00ccff"></div> Meta Emerged Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#33ff33"></div> Impact Breakthroughs</div>
     </div>
