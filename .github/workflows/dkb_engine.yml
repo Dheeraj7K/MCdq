@@ -36,9 +36,17 @@ jobs:
           # generate the new procedural JSON posts, and rebuild the static website.
           python scheduler.py --cycle 1
           
+      - name: 💾 Commit Generated Data back to Main
+        run: |
+          git config --global user.name "DKB Bot (GitHub Actions)"
+          git config --global user.email "bot@dkb-framework.com"
+          git add data/ website/graph_data.json website/index.html
+          git commit -m "⟁ Automated DKB Framework Update (Data Persistence)" || echo "No changes to commit"
+          git push origin main
+          
       - name: 🌐 Deploy Website to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website
-          commit_message: "⟁ Automated DKB Framework Update via Quantum Analyzer"
+          commit_message: "⟁ Automated DKB Framework Update (Deployment)"

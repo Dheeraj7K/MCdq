@@ -87,6 +87,7 @@
   ],
 
   "master_equation": {
+    "name": "The Master Phase Equation",
     "eq": "Reality = O(∇θ)",
     "meaning": "All of physics, consciousness, and time — unified in one equation."
   },

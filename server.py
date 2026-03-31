@@ -297,7 +297,8 @@ def _build_website(posts: list, theory: dict):
         cirq_imp = p.get("quantum", {}).get("cirq", {}).get("improvement_pct", 895)
         
         # Safely escape JSON for HTML attribute
-        p_json = json.dumps(p).replace('"', '&quot;')
+        # We replace " with &quot; for HTML and ' with \' for JS context inside onclick='...'
+        p_json = json.dumps(p).replace('"', '&quot;').replace("'", "\\'")
         
         return f'''<div class="post-card" onclick="openPostById('{p_json}')">
           <div class="post-img-wrap"><img src="{img}" alt="{title}" loading="lazy" onerror="this.style.display='none'"></div>
@@ -310,6 +311,31 @@ def _build_website(posts: list, theory: dict):
         </div>'''
 
     cards_html = "\n".join(post_card(p) for p in posts[:100])
+
+    # Build Graph Data for 3D visualization
+    graph_nodes = [
+        {"id": "MasterEq", "name": theory["master_equation"]["name"], "desc": theory["master_equation"]["eq"], "color": "#ff33cc", "val": 30},
+    ]
+    graph_links = []
+    
+    # Core Theory nodes
+    for eq in theory["core_equations"]:
+        graph_nodes.append({"id": eq["name"], "name": eq["name"], "desc": eq["eq"], "color": "#6450ff", "val": 20})
+        graph_links.append({"source": eq["name"], "target": "MasterEq"})
+    
+    # Latest Breakthroughs as orbiting nodes
+    breakthroughs = [p for p in posts if p.get("theme") == "Breakthrough"][:15]
+    for b in breakthroughs:
+        b_id = b.get("id", "b")
+        q = b.get("quantum", {}).get("cirq", {})
+        label = f"κ={q.get('phi_node', 0)}"
+        graph_nodes.append({"id": b_id, "name": b.get("title"), "desc": label, "color": "#33ff33", "val": 15})
+        # Link to the equation it validated (randomly or by matching)
+        target_eq = theory["core_equations"][0]["name"]
+        graph_links.append({"source": b_id, "target": target_eq})
+
+    with open(website_dir / "graph_data.json", "w") as f:
+        json.dump({"nodes": graph_nodes, "links": graph_links}, f, indent=2)
 
     # Build equations list
     equations_html = "\n".join(
@@ -662,6 +688,7 @@ def _build_website(posts: list, theory: dict):
   <div class="nav-eq">Reality = O(∇θ)</div>
   <div class="nav-links">
     <a href="#posts">Feed</a>
+    <a href="visualization.html">Map 3D</a>
     <a href="#theory">Theory</a>
     <a href="#equations">Equations</a>
   </div>
@@ -825,7 +852,14 @@ document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("◈ DKB Connected Thoughts MCP Server starting...", file=sys.stderr)
-    print("  Tools: generate_thought_batch, run_full_day_cycle, get_quantum_reading,", file=sys.stderr)
-    print("         update_theory, rebuild_website, list_posts, get_theory_status, get_schedule", file=sys.stderr)
-    mcp.run(transport="stdio")
+    if "--build" in sys.argv:
+        print("◈ Rebuilding DKB Website...")
+        posts = get_all_posts(300)
+        theory = load_theory()
+        _build_website(posts, theory)
+        print("✅ Done.")
+    else:
+        print("◈ DKB Connected Thoughts MCP Server starting...", file=sys.stderr)
+        print("  Tools: generate_thought_batch, run_full_day_cycle, get_quantum_reading,", file=sys.stderr)
+        print("         update_theory, rebuild_website, list_posts, get_theory_status, get_schedule", file=sys.stderr)
+        mcp.run(transport="stdio")
