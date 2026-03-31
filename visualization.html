@@ -47,7 +47,7 @@
         <a href="index.html" class="nav-back">← Back to Feed</a>
         <h1 class="title">DKB System Map</h1>
         <p class="subtitle">Multi-Perspective Theory Architecture</p>
-        <div id="node-counter">Nodes: <span id="node-count">64</span></div>
+        <div id="node-counter">Nodes: <span id="node-count">68</span></div>
     </div>
 
     <div class="controls">
@@ -81,7 +81,8 @@
         <div class="legend-item"><div class="dot" style="background:#ff33cc"></div> Master Equation</div>
         <div class="legend-item"><div class="dot" style="background:#ffcc00"></div> Mega Nodes (12 Levels)</div>
         <div class="legend-item"><div class="dot" style="background:#6450ff"></div> Core Pillar Laws</div>
-        <div class="legend-item"><div class="dot" style="background:#ffee00"></div> Physical Constants & Invariants</div>
+        <div class="legend-item"><div class="dot" style="background:#ffee00"></div> Physical Constants</div>
+        <div class="legend-item"><div class="dot" style="background:#00ffff"></div> Arc Dynamics & Star Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#00ccff"></div> Meta Emerged Nodes</div>
         <div class="legend-item"><div class="dot" style="background:#33ff33"></div> Impact Breakthroughs</div>
     </div>
@@ -398,6 +399,34 @@
       "val": 18
     },
     {
+      "id": "C_arc_vec",
+      "name": "Arc Vector (A\u20d7)",
+      "desc": "Value: A\u20d7 = \u2207\u03b8 | The fundamental unit of motion and force: change in phase gradient.",
+      "color": "#00ffff",
+      "val": 18
+    },
+    {
+      "id": "C_spin_op",
+      "name": "Spin Operator (\u03ba)",
+      "desc": "Value: \u03ba = \u2207 \u00d7 A\u20d7 | The curl of the phase arc; observed as magnetic spin or angular momentum.",
+      "color": "#00ffff",
+      "val": 18
+    },
+    {
+      "id": "C_moebius_lock",
+      "name": "M\u00f6bius Loop Lock",
+      "desc": "Value: \u222e A\u20d7 \u00b7 dl\u20d7 = (2n+1)\u03c0 | The topological condition where a phase arc locks into stable matter.",
+      "color": "#00ffff",
+      "val": 18
+    },
+    {
+      "id": "C_star_node",
+      "name": "\u03c6\u2075 Star Node",
+      "desc": "Value: 11.09017 | The harmonic 'Star' resonance used in Cirq Runs for 890% coherence.",
+      "color": "#00ffff",
+      "val": 18
+    },
+    {
       "id": "2026-03-31_c6_p0",
       "name": "Result: The Scalar Ground State [Iter 1]",
       "desc": "Quantum Validation Efficiency: 121.97% (\u03c6-node resonant)",
@@ -710,6 +739,22 @@
     {
       "source": "C_H_dkb",
       "target": "L7"
+    },
+    {
+      "source": "C_arc_vec",
+      "target": "L1"
+    },
+    {
+      "source": "C_spin_op",
+      "target": "L8"
+    },
+    {
+      "source": "C_moebius_lock",
+      "target": "L7"
+    },
+    {
+      "source": "C_star_node",
+      "target": "L5"
     },
     {
       "source": "2026-03-31_c6_p0",
