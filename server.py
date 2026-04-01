@@ -621,6 +621,15 @@ def _build_website(posts: list, theory: dict):
   .sidebar-section {{ margin-bottom: 60px; }}
   .sidebar-title {{ font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 800; color: var(--accent); margin-bottom: 32px; }}
   
+  /* ── PROJECT CARDS ── */
+  .project-card {{
+    background: rgba(100, 80, 255, 0.05); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; margin-bottom: 20px; transition: 0.3s; text-decoration: none; display: block;
+  }}
+  .project-card:hover {{ border-color: var(--accent2); background: rgba(100, 80, 255, 0.1); transform: translateX(5px); }}
+  .project-name {{ display: block; font-weight: 900; font-family: var(--font-heading); color: #fff; margin-bottom: 4px; }}
+  .project-meta {{ font-size: 0.75rem; color: var(--muted); }}
+
   .eq-item {{ margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 16px; }}
   .eq-code {{ display: block; font-family: var(--font-mono); font-size: 1rem; color: var(--accent2); margin: 8px 0; word-break: break-all; }}
   .eq-domain {{ font-size: 0.75rem; color: var(--muted); font-style: italic; }}
@@ -722,9 +731,29 @@ def _build_website(posts: list, theory: dict):
     </div>
   </main>
 
-  <aside class="sidebar" id="theory">
+  <aside class="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">Architecture Status</div>
+      <div class="sidebar-title">Hosted Projects</div>
+      <a href="https://dkb-phase-framework-simulator-146274734723.us-west1.run.app/" target="_blank" class="project-card">
+        <span class="project-name">Phase Simulator</span>
+        <span class="project-meta">Real-time interference calculator.</span>
+      </a>
+      <a href="visualization.html" class="project-card">
+        <span class="project-name">3D System Map</span>
+        <span class="project-meta">Topological Theory Spine (L0-L12).</span>
+      </a>
+      <a href="https://youtu.be/ZxNss-vrB2g?si=XN6c9zuRqpXunIhj" target="_blank" class="project-card">
+        <span class="project-name">Theory in 60s</span>
+        <span class="project-meta">YouTube Documentation.</span>
+      </a>
+      <a href="https://github.com/Dheeraj7K/MCdq" target="_blank" class="project-card">
+        <span class="project-name">Core Repository</span>
+        <span class="project-meta">Open-source framework logic.</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Theory Spine Constants</div>
       <div class="eq-item">
         <span class="eq-num">Master Framework</span>
         <code class="eq-code">Reality = O(∇θ)</code>
